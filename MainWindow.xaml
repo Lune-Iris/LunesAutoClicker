@@ -67,7 +67,7 @@
                 </Button>
                 <Label 
                     Content="LAC3 0.0.1" 
-                    HorizontalAlignment="Left" 
+                    HorizontalAlignment="Right" 
                     Margin="725,0,0,0" 
                     VerticalAlignment="Top" 
                     Height="27" 
