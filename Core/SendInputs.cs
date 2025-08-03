@@ -36,7 +36,7 @@ internal class SendInputs
         if (clicker.Delay != 0 && (clicker.Delay >= PerfModeTime || clicker.MaxDelay >= PerfModeTime || clicker.HoldDuration >= PerfModeTime))
             Thread.Sleep(clicker.GetRandomDelay());
 
-        if (PerfMode && !(BIPM && clicker.BurstMode) && (clicker.Delay <= PerfModeTime && clicker.MaxDelay <= PerfModeTime && clicker.HoldDuration <= PerfModeTime))
+        if (PerfMode && !(BIPM && clicker.BurstMode) && clicker.Delay <= PerfModeTime && clicker.MaxDelay <= PerfModeTime && clicker.HoldDuration <= PerfModeTime)
             Thread.Sleep(PerfModeTime);
     }
 
@@ -58,7 +58,7 @@ internal class SendInputs
         if (clicker.Delay != 0 && (clicker.Delay >= PerfModeTime || clicker.MaxDelay >= PerfModeTime || clicker.HoldDuration >= PerfModeTime))
             Thread.Sleep(clicker.GetRandomDelay());
 
-        if (PerfMode && !(BIPM && clicker.BurstMode) && (clicker.Delay <= PerfModeTime && clicker.MaxDelay <= PerfModeTime && clicker.HoldDuration <= PerfModeTime))
+        if (PerfMode && !(BIPM && clicker.BurstMode) && clicker.Delay <= PerfModeTime && clicker.MaxDelay <= PerfModeTime && clicker.HoldDuration <= PerfModeTime)
             Thread.Sleep(PerfModeTime);
     }
 }
