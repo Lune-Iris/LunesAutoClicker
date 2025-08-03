@@ -66,11 +66,11 @@
                     </Button.Clip>
                 </Button>
                 <Label 
-                    Content="LAC3 0.0.8" 
+                    Content="LAC3 0.0.9" 
                     HorizontalAlignment="Right" 
                     VerticalAlignment="Top" 
                     Height="27" 
-                    Width="75" FontFamily="Consolas" FontWeight="Bold" Foreground="White"/>
+                    Width="83" FontFamily="Consolas" FontWeight="Bold" Foreground="White"/>
 
                 <Border 
                     Margin="115,10,0,0" 
@@ -870,10 +870,12 @@
                 Cursor="Hand" 
                 FontFamily="Consolas" 
                 FontWeight="Bold" 
-                Height="51" 
+                Height="50" 
                 VerticalAlignment="Bottom" 
+                VerticalContentAlignment="Center" 
+                HorizontalContentAlignment="Center" 
                 Margin="275,0,275,10" 
-                Grid.ColumnSpan="2">
+                Grid.ColumnSpan="2" FontSize="24">
                 <Button.Background>
                     <SolidColorBrush Color="#FF7B7B7B" Opacity="0.75"/>
                 </Button.Background>
