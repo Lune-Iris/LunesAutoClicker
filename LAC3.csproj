@@ -7,6 +7,7 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<ApplicationIcon>Icon.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -20,6 +21,10 @@
 	  <AvaloniaXaml Include="MainWindow.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </AvaloniaXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="Icon.ico" />
 	</ItemGroup>
 
 </Project>

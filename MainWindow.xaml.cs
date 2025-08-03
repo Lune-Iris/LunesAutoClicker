@@ -14,9 +14,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-
         LoadSettings();
-
         timeBeginPeriod(1);
         activePanel = MainPanel;
 
@@ -32,7 +30,15 @@ public partial class MainWindow : Window
 
         foreach (var kliker in GetAllKlikers())
             AddProfileButtonBoot(kliker.ClickerName);
+
+        Loaded += MainWindow_Loaded;
     }
+    
+    private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+    {
+        await GetTitleAsync();
+    }
+
 
 
     internal void SaveSettings()

@@ -9,5 +9,7 @@ global using System.Windows.Input;
 global using System.Windows.Media;
 global using System.Windows.Media.Animation;
 global using static LAC3.Core.ClickerManager;
+global using static LAC3.Core.GoogleDoc;
 global using static LAC3.Imports.LibraryImports;
 global using static LAC3.Utilities.Utils;
+global using System.Net.Http;
