@@ -178,35 +178,6 @@ public partial class MainWindow : Window
             SendLogMessage($"Unable to load state: {ex.Message}");
         }
     }
-
-
-
-
-
-
-
-
-    internal void LoadSettings2()
-    {
-        var activationBind = new ClickBind { Key = Key.F13 };
-        var actionBind = new ClickBind { Key = Key.F };
-
-        ClickerManager.CreateKliker(
-            name: "test",
-            activationBind: activationBind,
-            actionBind: actionBind,
-            holdDuration: 0,
-            delay: 1,
-            maxDelay: 0,
-            burstCount: 5,
-            holdMode: false,
-            toggleMode: false,
-            burstMode: true,
-            shouldSpam: true
-        );
-    }
-
-
     private void PerformanceMode(object sender, RoutedEventArgs e)
     {
         var cb = (CheckBox)sender;
@@ -272,8 +243,8 @@ public partial class MainWindow : Window
 
     private void ResetSettings(object sender, RoutedEventArgs e)
     {
-        PerfModeTime = 15;
-        PMT.Text = "15";
+        PerfModeTime = 10;
+        PMT.Text = $"{PerfModeTime}";
         PerfMode = true;
         PerfCheck.Visibility = Visibility.Visible;
         PerfCB.IsChecked = true;
@@ -558,8 +529,6 @@ public partial class MainWindow : Window
         DebugBurstModeLabel.Content = $"BurstMode: {burstMode}";
         DebugThreadLabel.Content = $"Profile is on CPU Thread #{existing?.ThreadId.ToString()}";
     }
-
-
 
     private void PTBChecked(object sender, RoutedEventArgs e)
     {

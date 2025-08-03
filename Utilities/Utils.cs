@@ -3,7 +3,7 @@ internal class Utils
 {
     internal static readonly Random RandomGenerator = new();
 
-    internal static int PerfModeTime = 15;
+    internal static int PerfModeTime = 10;
     internal static bool 
         PerfMode,
         BIPM, 

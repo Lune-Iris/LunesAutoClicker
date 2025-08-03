@@ -23,7 +23,7 @@ internal class SendInputs
         clicker.MouseBuffer[0] = down;
         SendInput(1, clicker.MouseBuffer, Marshal.SizeOf<INPUT>());
 
-        if (clicker.HoldDuration > 0)
+        if (clicker.HoldDuration != 0)
             Thread.Sleep(clicker.HoldDuration);
 
         GetMouseEvent(bind.Mouse!.Value, false, out uint upFlags, out uint upData);
@@ -33,9 +33,10 @@ internal class SendInputs
         clicker.MouseBuffer[0] = up;
         SendInput(1, clicker.MouseBuffer, Marshal.SizeOf<INPUT>());
 
-        Thread.Sleep(clicker.GetRandomDelay());
+        if (clicker.Delay != 0 && (clicker.Delay >= PerfModeTime || clicker.MaxDelay >= PerfModeTime || clicker.HoldDuration >= PerfModeTime))
+            Thread.Sleep(clicker.GetRandomDelay());
 
-        if (PerfMode && !BIPM)
+        if (PerfMode && !(BIPM && clicker.BurstMode) && (clicker.Delay <= PerfModeTime && clicker.MaxDelay <= PerfModeTime && clicker.HoldDuration <= PerfModeTime))
             Thread.Sleep(PerfModeTime);
     }
 
@@ -46,7 +47,7 @@ internal class SendInputs
         clicker.KeyBuffer[0] = down;
         SendInput(1, clicker.KeyBuffer, Marshal.SizeOf<INPUT>());
 
-        if (clicker.HoldDuration > 0)
+        if (clicker.HoldDuration != 0)
             Thread.Sleep(clicker.HoldDuration);
 
         var up = down;
@@ -54,9 +55,10 @@ internal class SendInputs
         clicker.KeyBuffer[0] = up;
         SendInput(1, clicker.KeyBuffer, Marshal.SizeOf<INPUT>());
 
-        Thread.Sleep(clicker.GetRandomDelay());
+        if (clicker.Delay != 0 && (clicker.Delay >= PerfModeTime || clicker.MaxDelay >= PerfModeTime || clicker.HoldDuration >= PerfModeTime))
+            Thread.Sleep(clicker.GetRandomDelay());
 
-        if (PerfMode && !BIPM)
+        if (PerfMode && !(BIPM && clicker.BurstMode) && (clicker.Delay <= PerfModeTime && clicker.MaxDelay <= PerfModeTime && clicker.HoldDuration <= PerfModeTime))
             Thread.Sleep(PerfModeTime);
     }
 }
