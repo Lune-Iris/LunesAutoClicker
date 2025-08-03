@@ -14,7 +14,7 @@
             <Grid 
           x:Name="MainPanel"
           RenderOptions.BitmapScalingMode="NearestNeighbor"
-          Visibility="Collapsed">
+          Visibility="Visible">
                 <Grid.Background>
                     <ImageBrush ImageSource="/Assets/PMBG.png"/>
                 </Grid.Background>
@@ -364,7 +364,7 @@
             <Grid 
                   x:Name="KlikerPanel"
                   RenderOptions.BitmapScalingMode="NearestNeighbor"
-                  Visibility="Visible">
+                  Visibility="Collapsed">
                 <Grid.Background>
                     <ImageBrush ImageSource="/Assets/PKBG.png"/>
                 </Grid.Background>

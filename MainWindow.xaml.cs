@@ -18,7 +18,7 @@ public partial class MainWindow : Window
         LoadSettings();
 
         timeBeginPeriod(1);
-        activePanel = KlikerPanel;
+        activePanel = MainPanel;
 
         InnerBorder.SizeChanged += (s, e) =>
         {
