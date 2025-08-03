@@ -617,6 +617,46 @@ public partial class MainWindow : Window
         ProfilesPanel.Children.Add(btn);
     }
 
+    private void DeleteProfile(object sender, RoutedEventArgs e)
+    {
+        var name = ProfileNameTextBox2.Text.Trim();
+        if (string.IsNullOrWhiteSpace(name))
+            return;
+
+        var btn = ProfilesPanel.Children
+                               .OfType<Button>()
+                               .FirstOrDefault(b =>
+                                   string.Equals((string)b.Content, name, StringComparison.OrdinalIgnoreCase));
+        if (btn == null)
+            return;
+
+        DeleteKliker(name);
+        ProfilesPanel.Children.Remove(btn);
+
+        ProfileNameTextBox2.Text = "";
+    }
+
+
+    private void ClearAllProfiles(object sender, RoutedEventArgs e)
+    {
+        ClearAll();
+
+        ProfilesPanel.Children.Clear();
+
+        _currentlyEditing = string.Empty;
+        EditingLabel.Content = string.Empty;
+        ProfileNameTextBox2.Text = "";
+        Bind.Text = "";
+        BindClick.Text = "";
+        NHoldDurTextBox.Text = "";
+        NdelayTextBox.Text = "";
+        NMaxDelayTextBox.Text = "";
+        NBurstCountTextBox.Text = "";
+        HTC.IsChecked = false;
+        TTC.IsChecked = false;
+        PTB.IsChecked = false;
+    }
+
     private void AddProfile(object sender, RoutedEventArgs e)
     {
         var name = ProfileNameTextBox2.Text.Trim();
@@ -660,7 +700,6 @@ public partial class MainWindow : Window
             shouldSpam: true
         );
         ProfileNameTextBox2.Text = "";
-        AddProfileButton.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
     }
 
     private void ProfileButton(object sender, RoutedEventArgs e)
@@ -697,6 +736,7 @@ public partial class MainWindow : Window
         DebugToggleModeLabel.Content = $"ToggleMode: {clicker.ToggleMode.ToString()}";
         DebugBurstModeLabel.Content = $"BurstMode: {clicker.BurstMode.ToString()}";
         DebugThreadLabel.Content = $"Profile is on CPU Thread #{clicker.ThreadId.ToString()}";
+
         ToProfilePanel(sender, e);
     }
 
@@ -710,5 +750,13 @@ public partial class MainWindow : Window
     {
         SendLogMessage("Sent save state request...");
         SaveSettings();
+    }
+
+    private async void CoinFlip(object sender, RoutedEventArgs e)
+    {
+        CoinLabel.Content = "...";
+        await Task.Delay(500);
+        var result = RandomGenerator.Next(2) == 0 ? "Heads" : "Tails";
+        CoinLabel.Content = result;
     }
 }

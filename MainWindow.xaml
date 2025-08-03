@@ -66,11 +66,70 @@
                     </Button.Clip>
                 </Button>
                 <Label 
-                    Content="LAC3 0.0.5" 
+                    Content="LAC3 0.0.7" 
                     HorizontalAlignment="Right" 
                     VerticalAlignment="Top" 
                     Height="27" 
                     Width="75" FontFamily="Consolas" FontWeight="Bold" Foreground="White"/>
+
+                <Border 
+                    Margin="115,10,0,0" 
+                    Width="100" 
+                    Height="25" 
+                    Background="White" 
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left" 
+                    Opacity="0.75" 
+                    CornerRadius="8,8,8,8"/>
+                <Border 
+                    Margin="10,10,0,0" 
+                    Width="100" 
+                    Height="50" 
+                    Background="White" 
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left" 
+                    Opacity="0.75" 
+                    CornerRadius="8,8,8,8"/>
+                <Button 
+                    Content="Flip" 
+                    Click="CoinFlip"
+                    HorizontalAlignment="Left" 
+                    Margin="10,10,0,0" 
+                    VerticalAlignment="Top" 
+                    VerticalContentAlignment="Center" 
+                    HorizontalContentAlignment="Center" 
+                    Width="100" 
+                    Height="50" 
+                    FontFamily="Consolas" 
+                    FontSize="16" 
+                    FontWeight="Bold">
+                    <Button.Foreground>
+                        <SolidColorBrush 
+                            Color="Black" 
+                            Opacity="0.745"/>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <SolidColorBrush 
+                            Color="Black" 
+                            Opacity="0"/>
+                    </Button.Background>
+                </Button>
+                <Label 
+                    x:Name="CoinLabel"
+                    Content="..." 
+                    HorizontalAlignment="Left" 
+                    HorizontalContentAlignment="Center" 
+                    Margin="115,8,0,0" 
+                    VerticalAlignment="Top" 
+                    VerticalContentAlignment="Center" 
+                    Height="27" 
+                    Width="100" FontFamily="Consolas" FontWeight="Bold" FontSize="16">
+                    <Label.Background>
+                        <SolidColorBrush 
+                            Opacity="0" 
+                            Color="Black"/>
+                    </Label.Background>
+                </Label>
 
             </Grid>
 
@@ -393,7 +452,7 @@
                     </Button.Clip>
                 </Button>
                 <Border 
-                    Margin="0,56,61,0" 
+                    Margin="0,55,95,0" 
                     Background="Black" 
                     CornerRadius="8,8,8,8" 
                     VerticalAlignment="Top" 
@@ -410,17 +469,44 @@
                         </TransformGroup>
                     </Border.RenderTransform>
                 </Border>
+
                 <Label
                     Content="+"
                     VerticalContentAlignment="Center"
                     HorizontalContentAlignment="Center" 
                     FontFamily="Consolas" 
                     FontWeight="Bold" 
-                    FontSize="36" Margin="0,40,21,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="35"/>
-                <!-- Main border containing the scrollable profiles list and the AddProfile button -->
+                    FontSize="36" 
+                    Margin="0,40,21,0" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Right" 
+                    Width="35"/>
+
+                <Label
+                    Content="-"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center" 
+                    FontFamily="Consolas" 
+                    FontWeight="Bold" 
+                    FontSize="36" 
+                    Margin="0,40,55,0" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Right" 
+                    Width="35"/>
+
+                <Label
+                    Content="-"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center" 
+                    FontFamily="Consolas" 
+                    FontWeight="Bold" 
+                    FontSize="36" 
+                    Margin="0,40,290,0" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Right" 
+                    Width="35"/>
                 <Border 
-                    BorderBrush="Black" 
-                    BorderThickness="1" 
+
                     Background="#FF2C4231"
                     Margin="75,45,15,10" 
                     CornerRadius="8" 
@@ -430,18 +516,22 @@
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
-                            <!-- Label + TextBox + Button -->
                             <RowDefinition Height="*"/>
-                            <!-- Scrollable list -->
                         </Grid.RowDefinitions>
 
-                        <!-- Top row: Label, TextBox, Add button -->
                         <StackPanel 
                             Grid.Row="0" 
                             Orientation="Horizontal" 
                             HorizontalAlignment="Right" 
                             Margin="5">
-
+                            <Button 
+                                x:Name="ClearAllProfileButton"
+                                Width="35" 
+                                Height="35"
+                                Click="ClearAllProfiles"
+                                Background="Red"
+                                Cursor="Hand"
+                                ToolTip="Clear all profiles"/>
                             <Label 
                                 Target="{Binding ElementName=ProfileNameTextBox}" 
                                 VerticalAlignment="Center"
@@ -465,18 +555,27 @@
                             </TextBox>
 
                             <Button 
+                                x:Name="DeleteProfileButton"
+                                Width="35" 
+                                Height="35"
+                                Click="DeleteProfile"
+                                Background="#FFFF8080"
+                                Cursor="Hand"
+                                ToolTip="Delete a profile">
+                            </Button>
+
+                            <Button 
                                 x:Name="AddProfileButton"
                                 Width="35" 
                                 Height="35"
-                                IsEnabled="False"
                                 Click="AddProfile"
-                                Background="White"
+                                Background="#FF80FF80"
                                 Cursor="Hand"
                                 ToolTip="Add a new profile">
                             </Button>
+
                         </StackPanel>
 
-                        <!-- Scrollable area for profile buttons -->
                         <ScrollViewer 
                             Grid.Row="1" 
                             VerticalScrollBarVisibility="Auto" 
@@ -484,7 +583,6 @@
                             <StackPanel 
                                 x:Name="ProfilesPanel" 
                                 Orientation="Vertical">
-                                <!-- dynamic buttons go here -->
                             </StackPanel>
                         </ScrollViewer>
                     </Grid>
