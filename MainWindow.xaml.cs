@@ -1,4 +1,6 @@
-﻿namespace LAC3;
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace LAC3;
 
 public partial class MainWindow : Window
 {

@@ -1,4 +1,6 @@
-﻿namespace LAC3.Core;
+﻿using System;
+
+namespace LAC3.Core;
 
 internal static class ClickerManager
 {
@@ -75,6 +77,8 @@ internal static class ClickerManager
         if (!klikers.TryGetValue(name, out var existing))
             return false;
 
+
+
         existing.ShouldStop = true;
         if (klikerThreads.TryGetValue(name, out var oldThread))
         {
@@ -83,8 +87,8 @@ internal static class ClickerManager
         }
         existing.ShouldStop = false;
         existing.WasButtonPressed = false;
-        existing.ActivationBind = activationBind;
-        existing.ActionBind = actionBind;
+        existing.UpdateActivationBind(activationBind);
+        existing.UpdateActionBind(actionBind);
         existing.HoldDuration = holdDuration;
         existing.Delay = (ushort)(maxDelay > 0 && delay == 0 ? 1 : delay);
         existing.MaxDelay = maxDelay;

@@ -99,10 +99,10 @@ internal class ClickerConstruct
             ? ActionBind.IsKey
                 ? () => SendInputs.SendKeyboardInput(this)
                 : () => SendInputs.SendMouseInput(this)
-            : throw new ArgumentException("ActionBind must specify exactly one of Key or Mouse.");
+            : throw new ArgumentException("blah blah blah blah *crashes cutely*"); // sillier crash message
 
         if (!(ActivationBind.IsKey ^ ActivationBind.IsMouse))
-            throw new ArgumentException("ActivationBind must specify exactly one of Key or Mouse.");
+            throw new ArgumentException("blah blah blah blah *crashes cutely*");
     }
 
     internal void ThreadExecute()
@@ -142,5 +142,20 @@ internal class ClickerConstruct
     {
         for (int i = 0; i < BurstCount; i++)
             _sendInputAction();
+    }
+
+    public void UpdateActionBind(ClickBind newBind)
+    {
+        ActionBind = newBind;
+        RecalculateCaches();
+        _sendInputAction = ActionBind.IsKey
+            ? () => SendInputs.SendKeyboardInput(this)
+            : () => SendInputs.SendMouseInput(this);
+    }
+
+    public void UpdateActivationBind(ClickBind newBind)
+    {
+        ActivationBind = newBind;
+        RecalculateCaches();
     }
 }
