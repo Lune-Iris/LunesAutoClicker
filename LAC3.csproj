@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<UseWindowsForms>false</UseWindowsForms>
+		<useWPF>true</useWPF>
+		<TargetFramework>net9.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<ApplicationIcon>Icon.ico</ApplicationIcon>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Resource Include="Assets\*.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AvaloniaXaml Include="App.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </AvaloniaXaml>
+	  <AvaloniaXaml Include="MainWindow.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </AvaloniaXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="Icon.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="InputInterceptor" Version="2.2.1" />
+	</ItemGroup>
+
+</Project>

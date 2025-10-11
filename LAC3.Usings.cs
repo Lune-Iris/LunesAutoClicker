@@ -1,0 +1,16 @@
+﻿global using LAC3.Core;
+global using System.IO;
+global using System.Net.Http;
+global using System.Runtime.InteropServices;
+global using System.Text;
+global using System.Text.Json;
+global using System.Windows;
+global using System.Windows.Controls;
+global using System.Windows.Input;
+global using System.Windows.Media;
+global using System.Windows.Media.Animation;
+global using static LAC3.Core.ClickerManager;
+global using static LAC3.Core.GoogleDoc;
+global using static LAC3.Core.UpdateChecker;
+global using static LAC3.Imports.LibraryImports;
+global using static LAC3.Utilities.Utils;

@@ -1,0 +1,1272 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="LAC3.MainWindow"
+        Title="LAC3" 
+        Height="450" 
+        Width="800"
+        MinWidth="800" 
+        MinHeight="450">
+    <Grid ClipToBounds="True">
+        <Grid x:Name="LayoutRoot" ClipToBounds="True">
+            <!--Main Panel-->
+
+            <Grid 
+                x:Name="MainPanel"
+                RenderOptions.BitmapScalingMode="NearestNeighbor"
+                Visibility="Visible">
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Assets/PMBG.png"/>
+                </Grid.Background>
+                <Grid.RenderTransform>
+                    <TranslateTransform/>
+                </Grid.RenderTransform>
+
+                <Button Width="75" Height="75"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                BorderThickness="0"
+                Click="ToKlikerPanel"
+                Cursor="Hand"
+                Padding="1"
+                RenderOptions.BitmapScalingMode="NearestNeighbor">
+                    <Button.Background>
+                        <ImageBrush 
+                        ImageSource="/Assets/PRPageArrow.png" 
+                        Opacity="0.75"/>
+                    </Button.Background>
+                    <Button.Clip>
+                        <EllipseGeometry 
+                        Center="37.5,37.5" 
+                        RadiusX="37.5" 
+                        RadiusY="37.5"/>
+                    </Button.Clip>
+                </Button>
+
+                <Button 
+                Width="75" 
+                Height="75"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                BorderThickness="0"
+                Click="ToLogPanel"
+                Cursor="Hand"
+                Padding="1"
+                RenderOptions.BitmapScalingMode="NearestNeighbor">
+                    <Button.Background>
+                        <ImageBrush 
+                        ImageSource="/Assets/PLPageArrow.png" 
+                        Opacity="0.75"/>
+                    </Button.Background>
+                    <Button.Clip>
+                        <EllipseGeometry 
+                        Center="37.5,37.5" 
+                        RadiusX="37.5" 
+                        RadiusY="37.5"/>
+                    </Button.Clip>
+                </Button>
+                <Label 
+                    x:Name="VersionLabel"
+                    Content="LAC3 0.0.13" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    Height="27" 
+                    Width="83" FontFamily="Consolas" FontWeight="Bold" Foreground="White"/>
+
+                <Border 
+                    Margin="115,10,0,0" 
+                    Width="100" 
+                    Height="25" 
+                    Background="White" 
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left" 
+                    Opacity="0.75" 
+                    CornerRadius="8,8,8,8"/>
+                <Border 
+                    Margin="10,10,0,0" 
+                    Width="100" 
+                    Height="50" 
+                    Background="White" 
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left" 
+                    Opacity="0.75" 
+                    CornerRadius="8,8,8,8"/>
+                <Button 
+                    Content="Flip" 
+                    Click="CoinFlip"
+                    HorizontalAlignment="Left" 
+                    Margin="10,10,0,0" 
+                    VerticalAlignment="Top" 
+                    VerticalContentAlignment="Center" 
+                    HorizontalContentAlignment="Center" 
+                    Width="100" 
+                    Height="50" 
+                    FontFamily="Consolas" 
+                    FontSize="16" 
+                    FontWeight="Bold">
+                    <Button.Foreground>
+                        <SolidColorBrush 
+                            Color="Black" 
+                            Opacity="0.745"/>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <SolidColorBrush 
+                            Color="Black" 
+                            Opacity="0"/>
+                    </Button.Background>
+                </Button>
+                <Label 
+                    x:Name="CoinLabel"
+                    Content="..." 
+                    HorizontalAlignment="Left" 
+                    HorizontalContentAlignment="Center" 
+                    Margin="115,8,0,0" 
+                    VerticalAlignment="Top" 
+                    VerticalContentAlignment="Center" 
+                    Height="27" 
+                    Width="100" FontFamily="Consolas" FontWeight="Bold" FontSize="16">
+                    <Label.Background>
+                        <SolidColorBrush 
+                            Opacity="0" 
+                            Color="Black"/>
+                    </Label.Background>
+                </Label>
+                <Border 
+                    x:Name="updatebox" 
+                    Visibility="Collapsed"
+                    Margin="170,110,170,110" 
+                    CornerRadius="8,8,8,8">
+                    <Border.Background>
+                        <SolidColorBrush Color="White" Opacity="0.75"/>
+                    </Border.Background>
+                    <Label 
+                        Content="bro you should update me" 
+                        FontFamily="Consolas" 
+                        FontSize="32"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"/>
+                </Border>
+
+            </Grid>
+
+            <!-- Settings Panel -->
+
+            <Grid 
+              x:Name="SettingsPanel"
+              RenderOptions.BitmapScalingMode="NearestNeighbor"
+              Visibility="Collapsed">
+                <Grid.Background>
+                    <ImageBrush 
+                    ImageSource="/Assets/PSBG.png"/>
+                </Grid.Background>
+                <Grid.RenderTransform>
+                    <TranslateTransform/>
+                </Grid.RenderTransform>
+
+                <Button 
+                    Width="75" 
+                    Height="75"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    BorderThickness="0"
+                    Click="ToLogPanelY"
+                    RenderOptions.BitmapScalingMode="NearestNeighbor" 
+                    Cursor="Hand">
+                    <Button.Background>
+                        <ImageBrush 
+                            ImageSource="/Assets/PDPageArrow.png" 
+                            Opacity="0.75"/>
+                    </Button.Background>
+                    <Button.Clip>
+                        <EllipseGeometry 
+                            Center="37.5,37.5" 
+                            RadiusX="37.5" 
+                            RadiusY="37.5"/>
+                    </Button.Clip>
+                </Button>
+
+                <Border 
+                    Margin="10,0,0,10" 
+                    Opacity="0.75" 
+                    Width="150" 
+                    Height="50" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Bottom" 
+                    CornerRadius="8,8,8,8" 
+                    Background="White" Cursor="Hand">
+                    <Button 
+                        Click="ResetSettings"
+                        Content="Reset Settings" 
+                        FontFamily="Consolas" 
+                        FontWeight="Bold" 
+                        FontSize="16" 
+                        Cursor="Hand" 
+                        Width="150" 
+                        Height="50" 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center">
+                        <Button.Background>
+                            <SolidColorBrush Color="Black" Opacity="0"/>
+                        </Button.Background>
+                    </Button>
+                </Border>
+
+                <Border 
+                    Margin="10,65,0,0" 
+                    Opacity="0.75" 
+                    Width="150" 
+                    Height="50" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    CornerRadius="8,8,8,8" 
+                    Background="White" Cursor="Hand">
+                    <Button 
+                        Click="LoadSettingsbtn"
+                        Content="Load State" 
+                        FontFamily="Consolas" 
+                        FontWeight="Bold" 
+                        FontSize="16" 
+                        Cursor="Hand" 
+                        Width="150" 
+                        Height="50" 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center">
+                        <Button.Background>
+                            <SolidColorBrush Color="Black" Opacity="0"/>
+                        </Button.Background>
+                    </Button>
+                </Border>
+
+                <Border 
+                    Margin="10,10,0,0" 
+                    Opacity="0.75" 
+                    Width="150" 
+                    Height="50" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    CornerRadius="8" 
+                    Background="White"
+                    Cursor="Hand">
+                    <Button
+                        Click="SaveSettingsbtn"
+                        Content="Save State"
+                        FontFamily="Consolas"
+                        FontWeight="Bold"
+                        FontSize="16"
+                        Cursor="Hand"
+                        Height="50"
+                        Width="150"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center">
+                        <Button.Background>
+                            <SolidColorBrush Color="Black" Opacity="0"/>
+                        </Button.Background>
+                    </Button>
+                </Border>
+
+                <Border 
+                    Margin="0,10,170,0" 
+                    Opacity="0.75" 
+                    Width="150" 
+                    Height="50" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    CornerRadius="8" 
+                    Background="White"
+                    Cursor="Hand">
+                    <Button
+                        Click="InstallDriver"
+                        Content="Install Driver"
+                        FontFamily="Consolas"
+                        FontWeight="Bold"
+                        FontSize="16"
+                        Cursor="Hand"
+                        Height="50"
+                        Width="150"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center">
+                        <Button.Background>
+                            <SolidColorBrush Color="Black" Opacity="0"/>
+                        </Button.Background>
+                    </Button>
+                </Border>
+
+                <Border 
+                    Margin="0,70,170,0" 
+                    Opacity="0.75" 
+                    Width="150" 
+                    Height="50" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    CornerRadius="8" 
+                    Background="White"
+                    Cursor="Hand">
+                    <Button
+                        Click="UninstallDriver"
+                        Content="Uninstall Driver"
+                        FontFamily="Consolas"
+                        FontWeight="Bold"
+                        FontSize="16"
+                        Cursor="Hand"
+                        Height="50"
+                        Width="150"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center">
+                        <Button.Background>
+                            <SolidColorBrush Color="Black" Opacity="0"/>
+                        </Button.Background>
+                    </Button>
+                </Border>
+
+                <Border 
+                    x:Name="errborder"
+                    Margin="0,70,10,0" 
+                    Opacity="0.75" 
+                    Width="150" 
+                    Height="50" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    CornerRadius="8" 
+                    Background="White"
+                    Cursor="Hand">
+                    <Label 
+                        x:Name="errlabel"
+                        Content="..."
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        FontFamily="Consolas" 
+                        FontSize="16" 
+                        FontWeight="Bold" 
+                        />
+                </Border>
+
+                <Border 
+                    Opacity="0.75" 
+                    Width="150" 
+                    Height="50" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    CornerRadius="8" 
+                    Background="White"
+                    Margin="0,10,10,0
+">
+                    <Border 
+                        x:Name="lowlevelbordertoggle"
+                        Opacity="0.75" 
+                        Background="Black" 
+                        CornerRadius="8" 
+                        Height="45" 
+                        Width="145">
+                    </Border>
+
+                </Border>
+
+                <Button 
+                    x:Name="checkdriver"
+                    Content="" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Height="50" 
+                    Width="150" 
+                    Cursor="Hand"
+                    Click="CheckDriver" 
+                    FontFamily="Consolas" 
+                    FontSize="16" 
+                    FontWeight="Bold" 
+                    Margin="0,70,10,0">
+                    <Button.Background>
+                        <SolidColorBrush Color="Black" Opacity="0"/>
+                    </Button.Background>
+                </Button>
+
+                <Button 
+                    Content="Low Level Input" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Height="50" 
+                    Width="150" 
+                    Cursor="Hand"
+                    Click="ToggleLowLevelInput" 
+                    FontFamily="Consolas" 
+                    FontSize="16" 
+                    FontWeight="Bold" 
+                    Margin="0,10,10,0">
+                    <Button.Background>
+                        <SolidColorBrush Color="Black" Opacity="0"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+
+            <!-- Kliker Panel -->
+
+            <Grid 
+                  x:Name="KlikerPanel"
+                  RenderOptions.BitmapScalingMode="NearestNeighbor"
+                  Visibility="Collapsed">
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Assets/PKBG.png"/>
+                </Grid.Background>
+                <Grid.RenderTransform>
+                    <TranslateTransform/>
+                </Grid.RenderTransform>
+
+                <Button 
+                    Width="75" 
+                    Height="75"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    BorderThickness="0"
+                    Click="ToMainPanel"
+                    Cursor="Hand"
+                    RenderOptions.BitmapScalingMode="NearestNeighbor">
+                    <Button.Background>
+                        <ImageBrush 
+                            ImageSource="/Assets/PLPageArrow.png" 
+                            Opacity="0.75"/>
+                    </Button.Background>
+                    <Button.Clip>
+                        <EllipseGeometry 
+                            Center="37.5,37.5" 
+                            RadiusX="37.5" 
+                            RadiusY="37.5"/>
+                    </Button.Clip>
+                </Button>
+                
+                <Border 
+                    Margin="0,55,95,0" 
+                    Background="Black" 
+                    CornerRadius="8,8,8,8" 
+                    VerticalAlignment="Top" 
+                    Height="25" 
+                    HorizontalAlignment="Right" 
+                    RenderTransformOrigin="0.5,0.5" 
+                    Width="150">
+                    <Border.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform 
+                                ScaleX="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Border.RenderTransform>
+                </Border>
+                
+                <Border 
+                    Background="#FF2C4231"
+                    Margin="75,45,15,10" 
+                    CornerRadius="8" 
+                    Opacity="0.75">
+                </Border>
+                <Grid 
+                    Margin="75,85,15,10">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <ScrollViewer 
+                            Grid.Row="1" 
+                            VerticalScrollBarVisibility="Auto" 
+                            Margin="5">
+                        <StackPanel 
+                                x:Name="ProfilesPanel" 
+                                Orientation="Vertical">
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+
+                <Border 
+                    Width="35" 
+                    Height="35"
+                    Cursor="Hand"
+                    Margin="80,50,0,0" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    CornerRadius="5,5,5,5">
+                    <Border.Background>
+                        <SolidColorBrush 
+                            Color="Red"/>
+                    </Border.Background>
+                </Border>
+                
+                <Label
+                    Content="-"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center" 
+                    FontFamily="Consolas" 
+                    FontWeight="Bold" 
+                    FontSize="36" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Left" 
+                    Width="35" 
+                    Margin="80,40,0,0">
+                    <Label.Foreground>
+                        <SolidColorBrush 
+                            Color="Black" 
+                            Opacity="0.75"/>
+                    </Label.Foreground>
+                </Label>
+
+                <Button 
+                    x:Name="ClearAllProfileButton"
+                    Width="35" 
+                    Height="35"
+                    Click="ClearAllProfiles"
+                    Cursor="Hand"
+                    Margin="80,50,0,0" 
+                    HorizontalAlignment="Left"
+                    ToolTip="Clear all profiles"
+                    VerticalAlignment="Top">
+                    <Button.Background>
+                        <SolidColorBrush 
+                            Color="White" 
+                            Opacity="0"/>
+                    </Button.Background>
+                </Button>
+
+                <Label 
+                    Target="{Binding ElementName=ProfileNameTextBox}" 
+                    VerticalAlignment="Top"
+                    Foreground="White"
+                    Content="Name:" 
+                    FontFamily="Consolas" 
+                    FontWeight="Bold" 
+                    Width="45" 
+                    Height="25" 
+                    HorizontalAlignment="Right" 
+                    Margin="0,55,245,0"/>
+
+                <TextBox
+                    x:Name="ProfileNameTextBox2"
+                    Width="150"
+                    Height="25"
+                    VerticalAlignment="Top"
+                    TextChanged="ProfileNameTextBox_TextChanged" 
+                    BorderBrush="{x:Null}" 
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center" 
+                    Foreground="White" HorizontalAlignment="Right" Margin="0,55,95,0">
+                    <TextBox.Background>
+                        <SolidColorBrush 
+                            Color="White" 
+                            Opacity="0"/>
+                    </TextBox.Background>
+                </TextBox>
+
+                <Border 
+                    Width="35" 
+                    Height="35"
+                    Cursor="Hand"
+                    Margin="0,50,55,0" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Right" 
+                    CornerRadius="5, 0, 0, 5">
+                    <Border.Background>
+                        <SolidColorBrush 
+                            Color="#FFFF8080"/>
+                    </Border.Background>
+                </Border>
+
+                <Label
+                    Content="-"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center" 
+                    FontFamily="Consolas" 
+                    FontWeight="Bold" 
+                    FontSize="36" 
+                    Margin="0,40,55,0" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Right" 
+                    Width="35">
+                    <Label.Foreground>
+                        <SolidColorBrush 
+                            Color="Black" 
+                            Opacity="0.75"/>
+                    </Label.Foreground>
+                </Label>
+
+                <Button 
+                    x:Name="DeleteProfileButton"
+                    Width="35" 
+                    Height="35"
+                    Click="DeleteProfile"
+                    Cursor="Hand"
+                    Margin="0,50,55,0" 
+                    VerticalAlignment="Top" 
+                    ToolTip="Delete profile with matching name (use the textbox to the left)"
+                    HorizontalAlignment="Right">
+                    <Button.Background>
+                        <SolidColorBrush 
+                            Color="White" 
+                            Opacity="0"/>
+                    </Button.Background>
+                </Button>
+
+                <Border 
+                    Width="35" 
+                    Height="35"
+                    Cursor="Hand"
+                    ToolTip="Add a new profile" 
+                    Margin="0,50,20,0" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" CornerRadius="0,5,5,0">
+                    <Border.Background>
+                        <SolidColorBrush 
+                            Color="#FF80FF80"/>
+                    </Border.Background>
+                </Border>
+
+                <Label
+                    Content="+"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center" 
+                    FontFamily="Consolas" 
+                    FontWeight="Bold" 
+                    FontSize="36" 
+                    Margin="0,40,20,0" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Right" 
+                    Width="35">
+                    <Label.Foreground>
+                        <SolidColorBrush 
+                            Color="Black" 
+                            Opacity="0.75"/>
+                    </Label.Foreground>
+                </Label>
+
+                <Button 
+                    x:Name="AddProfileButton"
+                    Width="35" 
+                    Height="35"
+                    Click="AddProfile"
+                    Cursor="Hand"
+                    ToolTip="Add a new profile" 
+                    Margin="0,50,20,0" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top">
+                    <Button.Background>
+                        <SolidColorBrush 
+                            Color="White" 
+                            Opacity="0"/>
+                    </Button.Background>
+                </Button>
+
+            </Grid>
+
+            <!-- Log Panel -->
+
+            <Grid 
+              x:Name="LogPanel"
+              RenderOptions.BitmapScalingMode="NearestNeighbor"
+              Visibility="Collapsed">
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Assets/PLBG.png"/>
+                </Grid.Background>
+                <Grid.RenderTransform>
+                    <TranslateTransform/>
+                </Grid.RenderTransform>
+
+                <Button 
+                Width="75" 
+                Height="75"
+                HorizontalAlignment="Right"
+                BorderThickness="0,0,0,0"
+                Click="ToMainPanel" 
+                Cursor="Hand" 
+                Padding="1,1,1,1"
+                RenderOptions.BitmapScalingMode="NearestNeighbor" 
+                Margin="0,0,0,10" 
+                VerticalAlignment="Bottom">
+                    <Button.Background>
+                        <ImageBrush 
+                        ImageSource="/Assets/PRPageArrow.png" 
+                        Opacity="0.75"/>
+                    </Button.Background>
+                    <Button.Clip>
+                        <EllipseGeometry 
+                        Center="37.5,37.5" 
+                        RadiusX="37.5" 
+                        RadiusY="37.5"/>
+                    </Button.Clip>
+                </Button>
+
+                <Button 
+                HorizontalAlignment="Left" 
+                Margin="10,10,0,0" 
+                VerticalAlignment="Top" 
+                Height="35" 
+                Width="35" 
+                Click="ToSettingsPanel"
+                BorderThickness="0,0,0,0"
+                Cursor="Hand" 
+                Padding="1,1,1,1"
+                RenderOptions.BitmapScalingMode="NearestNeighbor">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Assets/PSettings.png"/>
+                    </Button.Background>
+                    <Button.Clip>
+                        <EllipseGeometry 
+                        Center="17.5,17.5" 
+                        RadiusX="17.5" 
+                        RadiusY="17.5"/>
+                    </Button.Clip>
+                </Button>
+
+                <Border 
+                    BorderBrush="#FFB1A887" 
+                    BorderThickness="5,5,5,5" 
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Margin="10,50,80,10"
+                    ClipToBounds="True" 
+                    CornerRadius="8,8,8,8" 
+                    Opacity="0.75">
+                    <Border
+                        x:Name="InnerBorder"
+                        CornerRadius="8"
+                        Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        ClipToBounds="True">
+                        <TextBox
+                            Name="LogOutputTx"
+                            VerticalScrollBarVisibility="Auto"
+                            HorizontalScrollBarVisibility="Auto"
+                            TextWrapping="Wrap"
+                            IsReadOnly="True"
+                            AcceptsReturn="True"
+                            FontFamily="Consolas"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            TextChanged="LogOutput" 
+                            FontSize="16"/>
+                    </Border>
+                </Border>
+            </Grid>
+        </Grid>
+
+        <!-- Profile Panel -->
+
+        <Grid 
+                  x:Name="ProfilePanel"
+                  RenderOptions.BitmapScalingMode="NearestNeighbor"
+                  Visibility="Collapsed">
+            <Grid.Background>
+                <SolidColorBrush Color="#FFB9B9B9" Opacity="1"/>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RenderTransform>
+                <TranslateTransform/>
+            </Grid.RenderTransform>
+
+            <Label 
+                        x:Name="EditingLabel"
+                        Content="Editing ..." 
+                        Margin="0,80,0,0" 
+                        VerticalAlignment="Top" 
+                        FontSize="24" 
+                        FontFamily="Consolas" 
+                        FontWeight="Bold" 
+                        Grid.ColumnSpan="2" 
+                        HorizontalAlignment="Center" 
+                        Width="250" 
+                        Height="50"/>
+
+            <Button 
+                        Width="76" 
+                        Height="75"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        BorderThickness="0"
+                        Click="ToKlikerPanelY"
+                        RenderOptions.BitmapScalingMode="NearestNeighbor" 
+                        Cursor="Hand" Grid.ColumnSpan="2">
+                <Button.Background>
+                    <ImageBrush 
+                            ImageSource="/Assets/PUPageArrow.png" 
+                            Opacity="0.75"/>
+                </Button.Background>
+                <Button.Clip>
+                    <EllipseGeometry 
+                            Center="37.5,37.5" 
+                            RadiusX="40" 
+                            RadiusY="40"/>
+                </Button.Clip>
+            </Button>
+
+            <Border 
+                    BorderBrush="Black" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    Height="25" 
+                    Width="250" 
+                    Margin="0,10,10,0" 
+                    Background="#FF6F6F6F" 
+                    CornerRadius="8,8,8,8" 
+                    Opacity="0.75" 
+                    Grid.Column="1"/>
+            <Border 
+                    BorderBrush="Black" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    Height="25" 
+                    Width="250" 
+                    Margin="0,40,10,0" 
+                    Background="#FF6F6F6F" 
+                    CornerRadius="8,8,8,8" 
+                    Opacity="0.75" 
+                    Grid.Column="1"/>
+            <Border 
+                    BorderBrush="Black" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    Height="25" 
+                    Width="250" 
+                    Margin="0,70,10,0" 
+                    Background="#FF6F6F6F" 
+                    CornerRadius="8,8,8,8" 
+                    Opacity="0.75" 
+                    Grid.Column="1"/>
+            <Border 
+                    BorderBrush="Black" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    Height="25" 
+                    Width="250" 
+                    Margin="0,100,10,0" 
+                    Background="#FF6F6F6F" 
+                    CornerRadius="8,8,8,8" 
+                    Opacity="0.75" 
+                    Grid.Column="1"/>
+            <Border 
+                    BorderBrush="Black" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    Height="25" 
+                    Width="250" 
+                    Margin="0,250,10,0" 
+                    Background="#FF6F6F6F" 
+                    CornerRadius="8,8,8,8" 
+                    Opacity="0.75" 
+                    Grid.Column="1"/>
+            <Border 
+                    BorderBrush="Black" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    Height="25" 
+                    Width="250" 
+                    Margin="0,280,10,0" 
+                    Background="#FF6F6F6F" 
+                    CornerRadius="8,8,8,8" 
+                    Opacity="0.75" 
+                    Grid.Column="1"/>
+            <Border 
+                    BorderBrush="Black" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    Height="25" 
+                    Width="250" 
+                    Margin="0,220,10,0" 
+                    Background="#FF6F6F6F" 
+                    CornerRadius="8,8,8,8" 
+                    Opacity="0.75" 
+                    Grid.Column="1"/>
+            <Border 
+                    BorderBrush="Black" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    Height="25" 
+                    Width="250" 
+                    Margin="0,190,10,0" 
+                    Background="#FF6F6F6F" 
+                    CornerRadius="8,8,8,8" 
+                    Opacity="0.75" 
+                    Grid.Column="1"/>
+            <Border 
+                    BorderBrush="Black" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    Height="25" 
+                    Width="250" 
+                    Margin="0,160,10,0" 
+                    Background="#FF6F6F6F" 
+                    CornerRadius="8,8,8,8" 
+                    Opacity="0.75" 
+                    Grid.Column="1"/>
+            <Border 
+                    BorderBrush="Black" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    Height="25" 
+                    Width="250" 
+                    Margin="0,130,10,0" 
+                    Background="#FF6F6F6F" 
+                    CornerRadius="8,8,8,8" 
+                    Opacity="0.75" 
+                    Grid.Column="1"/>
+
+            <TextBox
+                    ToolTip="The name of this profile"
+                    TextWrapping="Wrap"
+                    Background="{x:Null}"
+                    Name="NProfileNameTextBox"
+                    PreviewTextInput="ProfileNameTextBox"
+                    HorizontalContentAlignment="Center" 
+                    VerticalContentAlignment="Center" 
+                    Height="25" 
+                    Margin="0,10,10,0" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Right" 
+                    Width="250" BorderBrush="{x:Null}" Grid.Column="1"/>
+            <Button 
+                    Content="Save Changes" 
+                    Width="250" 
+                    Click="SaveProfileChanges" 
+                    Cursor="Hand" 
+                    FontFamily="Consolas" 
+                    FontWeight="Bold" 
+                    Height="50" 
+                    VerticalAlignment="Bottom" 
+                    VerticalContentAlignment="Center" 
+                    HorizontalContentAlignment="Center" 
+                    Margin="0,0,0,10" 
+                    Grid.ColumnSpan="2" FontSize="24">
+                <Button.Background>
+                    <SolidColorBrush Color="#FF7B7B7B" Opacity="0.75"/>
+                </Button.Background>
+            </Button>
+
+            <TextBox 
+                    x:Name="Bind"
+                    ToolTip="The key to activate this profile"
+                    IsReadOnly="True"
+                    Text="(Click to bind)"
+                    VerticalAlignment="Top"
+                    Padding="5"
+                    PreviewMouseDown="SetMouseBinding"
+                    PreviewKeyDown="SetKeyBinding" 
+                    Height="25" 
+                    Margin="0,40,10,0" 
+                    HorizontalContentAlignment="Center" 
+                    VerticalContentAlignment="Center" 
+                    HorizontalAlignment="Right" 
+                    Width="250" 
+                    Background="{x:Null}" 
+                    BorderBrush="{x:Null}" 
+                    FontWeight="Bold" 
+                    FontFamily="Consolas" 
+                    Grid.Column="1"/>
+            <TextBox 
+                    x:Name="BindClick"
+                    ToolTip="The key that should be automatically pressed"
+                    IsReadOnly="True"
+                    Text="(Click to bind)"
+                    VerticalAlignment="Top"
+                    Padding="5"
+                    PreviewMouseDown="SetMouseClickBinding"
+                    PreviewKeyDown="SetKeyPressBinding" 
+                    Height="25" 
+                    Margin="0,70,10,0" 
+                    HorizontalAlignment="Right" 
+                    HorizontalContentAlignment="Center" 
+                    VerticalContentAlignment="Center" 
+                    Width="250" 
+                    Background="{x:Null}" 
+                    BorderBrush="{x:Null}" 
+                    FontFamily="Consolas" 
+                    FontWeight="Bold" 
+                    Grid.Column="1"/>
+            <TextBox 
+                    ToolTip="(Ms) Anti detection. The maximum amount of time to be randomised between Delay and MaxDelay. Set this to the same or less than Delay to disable this."
+                    TextWrapping="Wrap"
+                    Background="{x:Null}"
+                    Name="NMaxDelayTextBox"
+                    PreviewTextInput="MaxDelayTextBox" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Right" 
+                    HorizontalContentAlignment="Center" 
+                    VerticalContentAlignment="Center" 
+                    Height="25" 
+                    Width="250" 
+                    Margin="0,160,10,0" 
+                    BorderBrush="{x:Null}" 
+                    Grid.Column="1"/>
+            <TextBox 
+                    ToolTip="(Ms) Time between each ActionKey press"
+                    TextWrapping="Wrap" 
+                    Margin="0,130,10,0"
+                    Background="{x:Null}"
+                    Name="NdelayTextBox"
+                    PreviewTextInput="DelayTextBox" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Right" 
+                    HorizontalContentAlignment="Center" 
+                    VerticalContentAlignment="Center" 
+                    Width="250" 
+                    Height="25" 
+                    BorderBrush="{x:Null}" 
+                    Grid.Column="1"/>
+            <TextBox 
+                    ToolTip="(Ms) How long the ActionKey should be held down for. I recommend you set this to 1 or higher since most games/apps wont register ActionKey presses otherwise"
+                    TextWrapping="Wrap" 
+                    Margin="0,100,10,0"
+                    Background="{x:Null}"
+                    Name="NHoldDurTextBox"
+                    PreviewTextInput="HoldDurTextBox" 
+                    HorizontalContentAlignment="Center" 
+                    VerticalContentAlignment="Center" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top"  
+                    Width="250" 
+                    Height="25" 
+                    BorderBrush="{x:Null}" 
+                    Grid.Column="1"/>
+            <TextBox 
+                    ToolTip="How many times should BurstMode press the ActionKey"
+                    TextWrapping="Wrap" 
+                    Margin="0,190,10,0"
+                    Background="{x:Null}"
+                    Name="NBurstCountTextBox"
+                    PreviewTextInput="BurstCountTextBox" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top"  
+                    HorizontalContentAlignment="Center" 
+                    VerticalContentAlignment="Center" 
+                    Width="250" 
+                    Height="25" 
+                    BorderBrush="{x:Null}" 
+                    Grid.Column="1"/>
+
+            <CheckBox 
+                    x:Name="PTB"
+                    ToolTip="Sends bursts of ActionKey Presses when the ActivationKey is pressed"
+                    Content="Burst Mode" 
+                    Margin="0,280,10,0"
+                    Checked="PTBChecked" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Right" 
+                    HorizontalContentAlignment="Center" 
+                    VerticalContentAlignment="Center" 
+                    Width="250" 
+                    Height="25" 
+                    Grid.Column="1" 
+                    FontFamily="Consolas" 
+                    FontWeight="Bold" FontSize="16"/>
+            <CheckBox 
+                    x:Name="TTC"
+                    ToolTip="Toggles the automatic pressing of ActionKey when ActivationKey is pressed"
+                    Content="Toggle Mode" 
+                    Margin="0,250,10,0"
+                    Checked="TTCChecked" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Right" 
+                    HorizontalContentAlignment="Center" 
+                    VerticalContentAlignment="Center" 
+                    Width="250" 
+                    Height="25" 
+                    Grid.Column="1" 
+                    FontFamily="Consolas" 
+                    FontWeight="Bold" FontSize="16"/>
+            <CheckBox 
+                    x:Name="HTC"
+                    ToolTip="Requires you to hold down the ActivationKey"
+                    Content="Hold Mode" 
+                    Margin="0,220,10,0" 
+                    Checked="HTCChecked" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top" 
+                    HorizontalContentAlignment="Center" 
+                    VerticalContentAlignment="Center" 
+                    Height="25" 
+                    Width="250" 
+                    Grid.Column="1" 
+                    FontFamily="Consolas" 
+                    FontWeight="Bold" FontSize="16"/>
+
+            <Label 
+                    x:Name="DebugNameLabel"
+                    Content="Name:" 
+                    HorizontalAlignment="Left" 
+                    Margin="10,10,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="250" Height="25" FontFamily="Consolas" FontWeight="Bold">
+                <Label.Background>
+                    <SolidColorBrush 
+                            Color="#FF7D7D7D" 
+                            Opacity="0.75"/>
+                </Label.Background>
+            </Label>
+            <Label 
+                    x:Name="DebugActivationLabel"
+                    Content="ActivationKey:" 
+                    HorizontalAlignment="Left" 
+                    Margin="10,40,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="250" 
+                    Height="25" 
+                    FontFamily="Consolas" 
+                    FontWeight="Bold">
+                <Label.Background>
+                    <SolidColorBrush Color="#FF7D7D7D" Opacity="0.75"/>
+                </Label.Background>
+            </Label>
+            <Label 
+                    x:Name="DebugActionLabel"
+                    Content="ActionKey:" 
+                    HorizontalAlignment="Left" 
+                    Margin="10,70,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="250" Height="25" FontFamily="Consolas" FontWeight="Bold">
+                <Label.Background>
+                    <SolidColorBrush Color="#FF7D7D7D" Opacity="0.75"/>
+                </Label.Background>
+            </Label>
+            <Label 
+                    x:Name="DebugHoldDurLabel"
+                    Content="HoldDur:" 
+                    HorizontalAlignment="Left" 
+                    Margin="10,100,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="250" Height="25" FontFamily="Consolas" FontWeight="Bold">
+                <Label.Background>
+                    <SolidColorBrush Color="#FF7D7D7D" Opacity="0.75"/>
+                </Label.Background>
+            </Label>
+            <Label 
+                    x:Name="DebugDelayLabel"
+                    Content="Delay:" 
+                    HorizontalAlignment="Left" 
+                    Margin="10,130,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="250" Height="25" FontFamily="Consolas" FontWeight="Bold">
+                <Label.Background>
+                    <SolidColorBrush Color="#FF7D7D7D" Opacity="0.75"/>
+                </Label.Background>
+            </Label>
+            <Label 
+                    x:Name="DebugMaxDelayLabel"
+                    Content="MaxDelay:" 
+                    HorizontalAlignment="Left" 
+                    Margin="10,160,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="250" Height="25" FontFamily="Consolas" FontWeight="Bold">
+                <Label.Background>
+                    <SolidColorBrush Color="#FF7D7D7D" Opacity="0.75"/>
+                </Label.Background>
+            </Label>
+            <Label 
+                    x:Name="DebugBurstCountLabel"
+                    Content="BurstCount:" 
+                    HorizontalAlignment="Left" 
+                    Margin="10,190,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="250" Height="25" FontFamily="Consolas" FontWeight="Bold">
+                <Label.Background>
+                    <SolidColorBrush Color="#FF7D7D7D" Opacity="0.75"/>
+                </Label.Background>
+            </Label>
+            <Label 
+                    x:Name="DebugHoldModeLabel"
+                    Content="HoldMode:" 
+                    HorizontalAlignment="Left" 
+                    Margin="10,220,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="250" Height="25" FontFamily="Consolas" FontWeight="Bold">
+                <Label.Background>
+                    <SolidColorBrush Color="#FF7D7D7D" Opacity="0.75"/>
+                </Label.Background>
+            </Label>
+            <Label 
+                    x:Name="DebugToggleModeLabel"
+                    Content="ToggleMode:" 
+                    HorizontalAlignment="Left" 
+                    Margin="10,250,0,0" 
+                    VerticalAlignment="Top"
+                    Width="250" Height="25" FontFamily="Consolas" FontWeight="Bold">
+                <Label.Background>
+                    <SolidColorBrush Color="#FF7D7D7D" Opacity="0.75"/>
+                </Label.Background>
+            </Label>
+            <Label 
+                    x:Name="DebugBurstModeLabel"
+                    Content="BurstMode:" 
+                    HorizontalAlignment="Left" 
+                    Margin="10,280,0,0"
+                    VerticalAlignment="Top" 
+                    Width="250" 
+                    Height="25" 
+                    FontFamily="Consolas" 
+                    FontWeight="Bold">
+                <Label.Background>
+                    <SolidColorBrush 
+                            Color="#FF7D7D7D" 
+                            Opacity="0.75"/>
+                </Label.Background>
+            </Label>
+            <Label 
+                    x:Name="DebugThreadLabel"
+                    Content="Thread is on cpu #" 
+                    Margin="0,0,0,66"
+                    VerticalAlignment="Bottom" 
+                    Width="250" 
+                    Height="25" 
+                    Grid.ColumnSpan="2" 
+                    FontFamily="Consolas" 
+                    FontWeight="Bold">
+                <Label.Background>
+                    <SolidColorBrush 
+                            Color="#FF7D7D7D" 
+                            Opacity="0.75"/>
+                </Label.Background>
+            </Label>
+
+            <Label 
+                    Content="Current" 
+                    Margin="10,310,0,0" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    HorizontalContentAlignment="Center" 
+                    VerticalContentAlignment="Center" 
+                    Width="250" 
+                    Height="35" 
+                    FontFamily="Consolas" 
+                    FontWeight="Bold" 
+                    FontSize="16"/>
+
+            <Label 
+                    Grid.Column="1" 
+                    Content="Options" 
+                    Margin="0,310,10,0" 
+                    HorizontalAlignment="Right" 
+                    HorizontalContentAlignment="Center" 
+                    VerticalContentAlignment="Center" 
+                    VerticalAlignment="Top" 
+                    Width="250" 
+                    Height="35" 
+                    FontFamily="Consolas" 
+                    FontWeight="Bold" 
+                    FontSize="16"/>
+
+        </Grid>
+    </Grid>
+
+</Window>
