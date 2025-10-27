@@ -1,10 +1,7 @@
-﻿using System.Text.RegularExpressions;
-
-namespace LAC3.Core;
-
+﻿namespace LAC3.Core;
 internal class UpdateChecker
 {
-    internal static async Task<bool> CheckForUpdates()
+    internal static async Task<bool?> CheckForUpdates()
     {
         string currentVersionRaw = string.Empty;
         var app = Application.Current;
@@ -18,41 +15,55 @@ internal class UpdateChecker
                     currentVersionRaw = l.Content?.ToString() ?? string.Empty;
             });
         }
-
         var currentVersion = ParseVersionFromLabel(currentVersionRaw);
         if (currentVersion == null)
-            return false;
+            return null;
 
-        using var http = new HttpClient();
-        http.DefaultRequestHeaders.UserAgent.ParseAdd("request");
-        var url = "https://api.github.com/repos/Lune-Iris/LunesAutoClicker/releases";
-        var json = await http.GetStringAsync(url);
+        try
+        {
+            using var http = new HttpClient();
+            http.DefaultRequestHeaders.UserAgent.ParseAdd("request");
+            http.Timeout = TimeSpan.FromSeconds(10);
 
-        using var doc = JsonDocument.Parse(json);
-        var firstRelease = doc.RootElement[0];
-        var tag = firstRelease.GetProperty("tag_name").GetString();
-
-        if (tag?.StartsWith("v", StringComparison.OrdinalIgnoreCase) == true)
-            tag = tag[1..];
-
-        return Version.TryParse(tag, out var latest) && latest > currentVersion;
+            var url = "https://api.github.com/repos/Lune-Iris/LunesAutoClicker/releases";
+            var json = await http.GetStringAsync(url);
+            using var doc = JsonDocument.Parse(json);
+            var firstRelease = doc.RootElement[0];
+            var tag = firstRelease.GetProperty("tag_name").GetString();
+            if (tag?.StartsWith("v", StringComparison.OrdinalIgnoreCase) == true)
+                tag = tag[1..];
+            return Version.TryParse(tag, out var latest) && latest > currentVersion;
+        }
+        catch (HttpRequestException)
+        {
+            return null;
+        }
+        catch (TaskCanceledException)
+        {
+            return null;
+        }
+        catch (JsonException)
+        {
+            return null;
+        }
+        catch
+        {
+            return null;
+        }
     }
 
     private static Version? ParseVersionFromLabel(string raw)
     {
         if (string.IsNullOrWhiteSpace(raw))
             return null;
-
         var m = Regex.Match(raw, @"\d+(\.\d+)+");
         if (m.Success && Version.TryParse(m.Value, out var v))
             return v;
-
         raw = raw.Trim();
         if (raw.StartsWith("LAC3 ", StringComparison.OrdinalIgnoreCase))
             raw = raw[5..].Trim();
         if (raw.StartsWith("v", StringComparison.OrdinalIgnoreCase))
             raw = raw[1..];
-
         return Version.TryParse(raw, out var v2) ? v2 : null;
     }
 }

@@ -67,7 +67,7 @@
                 </Button>
                 <Label 
                     x:Name="VersionLabel"
-                    Content="LAC3 0.0.13" 
+                    Content="LAC3 0.0.14" 
                     HorizontalAlignment="Right" 
                     VerticalAlignment="Top" 
                     Height="27" 

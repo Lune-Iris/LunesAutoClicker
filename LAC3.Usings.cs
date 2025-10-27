@@ -9,6 +9,7 @@ global using System.Windows.Controls;
 global using System.Windows.Input;
 global using System.Windows.Media;
 global using System.Windows.Media.Animation;
+global using System.Text.RegularExpressions;
 global using static LAC3.Core.ClickerManager;
 global using static LAC3.Core.GoogleDoc;
 global using static LAC3.Core.UpdateChecker;

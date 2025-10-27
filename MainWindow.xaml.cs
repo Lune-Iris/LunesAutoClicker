@@ -35,11 +35,24 @@ public partial class MainWindow : Window
     }
     private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
     {
-        await GetTitleAsync();
-        bool hasUpdate = await CheckForUpdates();
+        var updateResult = await UpdateChecker.CheckForUpdates();
 
-        if (FindName("updatebox") is Border border)
-            border.Visibility = hasUpdate ? Visibility.Visible : Visibility.Collapsed;
+        if (updateResult == true)
+        {
+            updatebox.Visibility = Visibility.Visible;
+            var label = updatebox.Child as Label;
+            if (label != null)
+                label.Content = "bro you should update me";
+        }
+        else if (updateResult == null)
+        {
+            updatebox.Visibility = Visibility.Visible;
+            if (updatebox.Child is Label label)
+            {
+                label.FontSize = 24;
+                label.Content = "failed to check updates\nur probs offline\nOR github is having issues";
+            }
+        }
     }
     internal void SaveSettings()
     {
