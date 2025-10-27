@@ -6,7 +6,7 @@ https://docs.google.com/document/d/1-1X2rkwak3LVsbMYOzIuPgVYVTbBe2UxBaJvrdXIN2U/
 
 these titles show for everyone and are randomised
 
-<img width="781" height="432" alt="image" src="https://github.com/user-attachments/assets/25669ae9-80ee-4c7f-860d-ff1c4770582e" />
+<img width="780" height="436" alt="image" src="https://github.com/user-attachments/assets/afc2b94a-8079-4f39-b78e-ead1760f9e3c" />
 
 u need .NET 9 from [Michael soft](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
 
